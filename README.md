@@ -10,6 +10,22 @@
 - Authors: **Tran Duc [@wataridori](https://github.com/wataridori) Thang** - **Nguyen Anh [@vigov5](https://github.com/vigov5) Tien**
 
 ## Install
+### Compile & deploy
+``` Bash
+# Active venv
+$ source ci-report-tool/bin/activate
+
+# Compile source code and symlink to /usr/local/bin/framgia-ci
+$ sudo python3 setup.py install
+# Build file to deploy to pypi
+$ sudo python3 setup.py sdist bdist_wheel
+# Upload to pypi
+$ twine upload --repository-url https://test.pypi.org/legacy/ dist/* --verbose
+# Build pre-compiled executable file
+$ cd framgiaci && pyinstaller -F --distpath=../dist framgia-ci.spec
+
+
+```
 ### Linux
 #### Pre-compiled executale file
 - For running inside **Docker Container**, which does not contain Python in almost cases
